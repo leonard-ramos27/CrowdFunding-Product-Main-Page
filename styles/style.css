@@ -1,0 +1,480 @@
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600;700&display=swap');
+
+*, *::after, *::before{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Commissioner', sans-serif;
+    color: black;
+}
+
+:root{
+    --light-gray: hsl(0, 0%, 98%);
+    --moderate-gray: hsl(0, 0%, 89%);
+    --dark-gray: hsl(0, 0%, 48%);
+    --moderate-cyan: hsl(176, 50%, 47%);
+    --dark-cyan: #147b74;
+}
+
+body{
+    background-color: var(--light-gray);
+    font-size: 16px;
+    min-width: 300px;
+    overflow-x: hidden;
+}
+
+main{
+    position: relative;
+    display: grid;
+}
+
+header{
+    background-image: url(../images/image-hero-mobile.jpg);
+    background-image: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,212,255,0) 20%), url(../images/image-hero-mobile.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 2rem 1.2rem 16rem 1.2rem;
+    position: relative;
+}
+
+.header-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.nav-bar{
+    position: absolute;
+    top: 3.5rem;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 20px 100px 100px 50px rgba(0,0,0,0.2);
+    transform: scale(1,0);
+    transform-origin: top;
+    z-index: 10;
+}
+
+.nav-bar-show{
+    transform: scale(1,1);
+}
+
+.nav-bar-transition{
+    transition: transform .3s ease-in-out;
+}
+
+.nav-bar li{
+    list-style: none;
+    padding: 1.6rem;
+    border-bottom: .5px solid rgba(231, 231, 231, 0.7);
+}
+
+.nav-bar a{
+    text-decoration: none;
+    color: black;
+    font-family: 'Commissioner', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.burger-icon, .close-icon{
+    transition: display 1s ease-in-out;
+}
+
+.hidden{
+    display: none;
+}
+
+section{
+    background-color: white;
+}
+
+.section-wrapper{
+    padding: 1.5rem;
+    position: absolute;
+    top: 14rem;
+    justify-self: center;
+    transition: .5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.section-container{
+    padding: 2rem 1.5rem 2rem;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 10px;
+    transition: .5s ease-in-out;
+}
+
+.hero-section{
+    padding-top: 3rem;
+    position: relative;
+    display: grid;
+    grid-template-areas: 
+    "h1 h1"
+    "p p"
+    "button1 button2";
+    justify-items: center;
+    gap: .5rem;
+}
+
+.logo-mastercraft{
+    position: absolute;
+    top: -1.8rem;
+    justify-self: center;
+}
+
+.hero-section h1,
+.hero-section p{
+    text-align: center;
+}
+
+.hero-section h1{
+    grid-area: h1;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.hero-section p{
+    grid-area: p;
+    color: var(--dark-gray);
+    font-size: .8rem;
+    font-weight: 400;
+    line-height: 1.4rem;
+    margin-bottom: 1rem;
+}
+
+.btn-back{
+    grid-area: button1;
+    border: none;
+    border-radius: 30px;
+    background-color: var(--moderate-cyan);
+    color: white;
+    font-size: .9rem;
+    font-weight: 600;
+    padding: 1rem 3rem;
+    white-space: nowrap;
+    justify-self: end;
+    width: auto;
+}
+
+.btn-bookmark{
+    grid-area: button2;
+    justify-self: start;
+    border: none;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-bookmark span{
+    display: none;
+}
+
+.stats-container, .stats-container p{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats-container{
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stats-container p{
+    gap: .5rem;
+    color: var(--dark-gray);
+    font-size: .9rem;
+    font-weight: 400;
+}
+
+.border-line::after{
+    content: "";
+    width: 80px;
+    height: 2px;
+    background-color: rgb(226, 226, 226);
+    margin-top: 1rem;
+}
+
+.stat-digit{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.stat-progress-bar{
+    width: 100%;
+    height: 2rem;
+}
+
+.about-section{
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+
+.about-section h2{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.about-section > p{
+    color: var(--dark-gray);
+    font-size: .85rem;
+    font-weight: 400;
+    line-height: 1.3rem;
+}
+
+.product-container{
+    padding: 1.5rem;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 10px;
+    display: grid;
+    gap: .5rem;
+}
+
+.product-name{
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.product-price{
+    color: var(--moderate-cyan);
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.product-desc{
+    color: var(--dark-gray);
+    font-size: .83rem;
+    font-weight: 400;
+    line-height: 1.3rem;
+    margin: 1rem 0;
+}
+
+.product-count{
+    color: var(--dark-gray);
+    font-size: .9rem;
+    font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.product-count span{
+    color: black;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-right: .3rem;
+}
+
+.btn-select-reward{
+    border: none;
+    border-radius: 30px;
+    background-color: var(--moderate-cyan);
+    color: white;
+    font-size: .8rem;
+    font-weight: 600;
+    padding: 1rem 1.8rem;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.product-disabled{
+    opacity: .5;
+}
+
+.product-disabled button{
+    background-color: var(--dark-gray);
+}
+
+
+
+
+@media screen and (min-width: 560px) {
+    .main-section{
+        width: 550px;
+    }
+
+    .btn-back{
+        justify-self: start;
+    }
+
+    .btn-bookmark{
+        justify-self: end;
+        background-color: #ebebeb;
+        border-radius:30px;
+    }
+
+    .btn-bookmark span{
+        display: block;
+        padding: 1.1rem 1.8rem 1.1rem 1rem;
+        font-size: .9rem;
+        font-weight: 600;
+        color: #505050;
+    }
+
+    /*.btn-bookmark img{
+        z-index: 10;
+        transform: translateX(10%);
+    }
+
+    .btn-bookmark::after{
+        content: "Bookmark";
+        display: inline-block;
+        transform: translateX(-20%);
+        background-color: #ebebeb;
+        padding: 1.1rem 1.5rem 1.1rem 2.3rem;
+        border-radius: 0 30px 30px 0;
+        font-size: .9rem;
+        font-weight: 600;
+        color: #505050;
+    }*/
+}
+
+@media screen and (min-width: 850px) {
+
+    header{
+        background-image: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,212,255,0) 40%), url(../images/image-hero-desktop.jpg);
+        padding: 3.5rem;
+        height: 400px;
+    }
+
+    .header-wrapper{
+        max-width: 1110px;
+        margin-inline: auto;
+    }
+
+    .nav-bar, .nav-bar li{
+        all: unset;
+    }
+
+    .nav-bar ul{
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .nav-bar a{
+        color: white;
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    .burger-menu{
+        display: none;
+    }
+
+    .section-wrapper{
+        top: 18rem;
+        gap: 1.5rem;
+    }
+
+    .section-container{
+        width: 750px;
+        padding: 3rem;
+    }
+
+    .hero-section{
+        padding-top: 3.5rem;
+        gap: .8rem;
+    }
+
+    .hero-section h1{
+        font-size: 1.7rem;
+    }
+
+    .hero-section p{
+        font-size: 1rem;
+        margin-bottom: 1.7rem;
+    }
+
+    .stats-container{
+        display: flex;
+        flex-direction: row;
+        gap: 3rem;
+    }
+
+    .stats-container p{
+        position: relative;
+        flex-basis: 100%;
+        align-items: flex-start;
+    }
+
+    .border-line::after{
+        all: unset;
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 2px;
+        background-color: rgba(226, 226, 226);
+    }
+
+    .about-section{
+        gap: 2rem;
+    }
+
+    .about-section h2{
+        font-size: 1.4rem;
+    }
+
+    .about-section > p{
+        font-size: 1.03rem;
+        line-height: 1.7rem;
+    }
+
+    .product-container{
+        padding: 2rem;
+        grid-template-areas: 
+        "name price"
+        "desc desc"
+        "count btn";
+        align-items: center;
+    }
+
+    .product-name{
+        grid-area: name;
+        font-size: 1.2rem;
+    }
+
+    .product-price{
+        grid-area: price;
+        justify-self: end;
+        font-size: 1rem;
+    }
+
+    .product-desc{
+        grid-area: desc;
+        font-size: 1.01rem;
+        line-height: 1.7rem;
+        margin: 1.5rem 0;
+    }
+
+    .product-count{
+        grid-area: count;
+        font-size: 1.01rem;
+    }
+
+    .product-count span{
+        font-size: 2.3rem;
+    }
+
+    .btn-select-reward{
+        grid-area: btn;
+        justify-self: end;
+        font-size: .9rem;
+        padding-inline: 2rem;
+    }
+}
