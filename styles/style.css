@@ -23,9 +23,21 @@ body{
     overflow-x: hidden;
 }
 
+input, button{
+    font-family: inherit;
+}
+
+input:focus{
+    outline: none;
+}
+
 main{
     position: relative;
     display: grid;
+}
+
+.main-hide-overflow{
+    overflow: hidden;
 }
 
 header{
@@ -172,10 +184,15 @@ section{
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    transition: background-color 0.25s ease-in-out;
 }
 
 .btn-bookmark span{
     display: none;
+}
+
+.bookmark-selected img{
+    content: url(../images/icon-bookmark-2.svg);
 }
 
 .stats-container, .stats-container p{
@@ -221,7 +238,7 @@ section{
     gap: 1.3rem;
 }
 
-.about-section h2{
+.about-section h2, .modal-container h1{
     font-size: 1.2rem;
     font-weight: 700;
 }
@@ -241,12 +258,12 @@ section{
     gap: .5rem;
 }
 
-.product-name{
+.product-name, .modal-product-name{
     font-size: .9rem;
     font-weight: 700;
 }
 
-.product-price{
+.product-price, .modal-product-price{
     color: var(--moderate-cyan);
     font-size: .9rem;
     font-weight: 500;
@@ -260,7 +277,7 @@ section{
     margin: 1rem 0;
 }
 
-.product-count{
+.product-count, .modal-product-count{
     color: var(--dark-gray);
     font-size: .9rem;
     font-weight: 400;
@@ -268,6 +285,9 @@ section{
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+}
+
+.product-count{
     margin-bottom: 1rem;
 }
 
@@ -298,13 +318,249 @@ section{
     background-color: var(--dark-gray);
 }
 
+.modal-screen{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 20;
+    overflow: auto;
+    background-color: hsla(0, 1%, 30%, 0.5);
+    padding: 2rem 1.3rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s,
+    opacity 0.25s 0s,
+    transform 0.25s;
+    display: grid;
+    align-items: center;
+}
+
+.show-modal{
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, 
+    opacity 0.25s 0s, 
+    transform 0.25s;
+}
+
+.modal-container{
+    min-width: 300px;
+    background-color: white;
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1.5rem;
+    margin-inline: auto;
+}
+
+.modal-product-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modal-product-container{
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 10px;
+    position: relative;
+}
+
+.modal-container p, .modal-product-form{
+    grid-column: span 2;
+}
+
+.modal-container h1{
+    white-space: nowrap;
+    justify-self: start;
+}
+
+.btn-close-modal{
+    width: fit-content;
+    justify-self: end;
+    background-color: white;
+    border: none;
+}
+
+.modal-container > p, .modal-product-desc, .modal-pledge-details label{
+    color: var(--dark-gray);
+    font-size: .83rem;
+    font-weight: 400;
+    line-height: 1.3rem;
+}
+
+.modal-product-details{
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    grid-template-areas: 
+    "radio name"
+    "radio price"
+    "desc desc"
+    "count count";
+    align-items: center;
+}
+
+.modal-product-count span{
+    color: black;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-right: .3rem;
+}
+
+.modal-product-radio{
+    grid-area: radio;
+    height: 25px;
+    width: 35px;
+    justify-self: start;
+}
+
+.modal-product-name{
+    grid-area: name;
+    margin-bottom: .3rem;
+}
+
+.modal-product-price{
+    grid-area: price;
+}
+
+.modal-product-desc{
+    grid-area: desc;
+    margin: 1rem 0;
+}
+
+.modal-product-count{
+    grid-area: count;
+}
+
+.modal-pledge-details{
+    /*padding: 1.5rem;*/
+    
+    /*display: none;*/
+    /*visibility: hidden;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;*/
+    
+    /*position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: position 500ms ease-in-out;*/
+    /*transform: translate(0%, -100%);
+    z-index: -10;*/
+    /*max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: height 1s ease-in-out,
+    opacity .5s .5s ease-in-out,
+    padding .2s ease-in-out;*/
+
+    border-top: 1px solid rgb(226, 226, 226);
+    display: grid;
+    grid-template-areas: 
+    "label label"
+    "input button";
+    justify-items: center;
+    gap: .5rem;
+
+    max-height: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform .2s ease-in-out;
+}
+
+.show-pledge-details{
+    /*transition: display 1s 1s ease-in-out,
+    transform 1s 1s ease-in-out;*/
+    /*visibility: visible;
+    transform: scaleY(1);
+    display: grid;*/
+    /*position: static;
+    visibility: visible;
+    opacity: 1;*/
+    /*padding: 1.5rem;
+    max-height: max-content;
+    opacity: 1;
+    transition: max-height 200ms ease-in-out;*/
+    /*transform: translate(0%, 100%);*/
+    padding: 1.5rem;
+    max-height: max-content;
+    transform: scaleY(1);
+    transition: transform .2s ease-in-out;
+}
+
+.modal-pledge-details label{
+    grid-area: label;
+}
+
+.modal-pledge-details input{
+    grid-area: input;
+    border: 1px solid rgb(226, 226, 226);
+    text-indent: .7rem;
+    position: relative;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.modal-pledge-details button{
+    grid-area: button;
+    border: none;
+    background-color: var(--moderate-cyan);
+    color: white;
+    font-size: .8rem;
+    font-weight: 700;
+}
+
+.modal-pledge-details input, .modal-pledge-details button{
+    padding: .7rem;
+    border-radius: 20px;
+    width: 100px;
+}
+
+
+.modal-completed{
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modal-completed p{
+    text-align: center;
+}
+
+.modal-completed button{
+    border: none;
+    border-radius: 30px;
+    background-color: var(--moderate-cyan);
+    color: white;
+    font-size: .9rem;
+    font-weight: 700;
+    padding: .7rem 2rem;
+}
 
 
 
-@media screen and (min-width: 560px) {
-    .main-section{
-        width: 550px;
-    }
+
+
+@media screen and (min-width: 35em) {
 
     .btn-back{
         justify-self: start;
@@ -316,6 +572,10 @@ section{
         border-radius:30px;
     }
 
+    .bookmark-selected{
+        background-color: hsl(176, 41%, 79%);
+    }
+
     .btn-bookmark span{
         display: block;
         padding: 1.1rem 1.8rem 1.1rem 1rem;
@@ -324,25 +584,13 @@ section{
         color: #505050;
     }
 
-    /*.btn-bookmark img{
-        z-index: 10;
-        transform: translateX(10%);
+    .bookmark-selected span{
+        color: var(--dark-cyan);
+        font-weight: 700;
     }
-
-    .btn-bookmark::after{
-        content: "Bookmark";
-        display: inline-block;
-        transform: translateX(-20%);
-        background-color: #ebebeb;
-        padding: 1.1rem 1.5rem 1.1rem 2.3rem;
-        border-radius: 0 30px 30px 0;
-        font-size: .9rem;
-        font-weight: 600;
-        color: #505050;
-    }*/
 }
 
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 53em) {
 
     header{
         background-image: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,212,255,0) 40%), url(../images/image-hero-desktop.jpg);
@@ -380,7 +628,7 @@ section{
         gap: 1.5rem;
     }
 
-    .section-container{
+    .section-container, .modal-container{
         width: 750px;
         padding: 3rem;
     }
@@ -476,5 +724,31 @@ section{
         justify-self: end;
         font-size: .9rem;
         padding-inline: 2rem;
+    }
+
+    .modal-product-details{
+        padding: 2rem;
+        display: grid;
+        grid-template-columns: 50px auto 1fr auto ;
+        grid-template-areas: 
+        "radio name price count"
+        "radio desc desc desc";
+        align-items: start;
+        column-gap: 1rem;
+    }
+
+    .modal-pledge-details{
+        /*padding: 2rem;*/
+        /*display: grid;*/
+        grid-template-areas: 
+        "label input button";
+        grid-template-columns: 1fr auto auto;
+        justify-items: start;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .show-pledge-details{
+        padding: 2rem;
     }
 }
