@@ -46,7 +46,7 @@
         <img src="./images/logo-mastercraft.svg" alt="Mastercraft logo" class="logo-mastercraft">
         <h1>Mastercraft Bamboo Monitor Riser</h1>
         <p>A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
-        <button class="btn-back" id="btn-back-project">Back this project</button>
+        <button class="btn-back green-button" id="btn-back-project">Back this project</button>
         <button class="btn-bookmark" alt="Bookmark Button" id="btn-bookmark"><img src="./images/icon-bookmark.svg" alt="Bookmark icon"><span>Bookmark</span></button>
       </section>
       <section class="section-container stats-section">
@@ -68,14 +68,14 @@
           <p class="product-price">Pledge $25 or more</p>
           <p class="product-desc">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.</p>
           <p class="product-count"><span>101</span> left</p>
-          <button class="btn-select-reward" id="btn-select-bamboo">Select Reward</button>
+          <button class="btn-select-reward green-button" id="btn-select-bamboo">Select Reward</button>
         </section>
         <section class="product-container">
           <h3 class="product-name">Black Edition Stand</h3>
           <p class="product-price">Pledge $75 or more</p>
           <p class="product-desc">You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
           <p class="product-count"><span>64</span> left</p>
-          <button class="btn-select-reward" id="btn-select-black-edition">Select Reward</button>
+          <button class="btn-select-reward green-button" id="btn-select-black-edition">Select Reward</button>
         </section>
         <section class="product-container product-disabled">
           <h3 class="product-name">Mahogany Special Edition</h3>
@@ -103,8 +103,10 @@
           </div>
           <div class="modal-pledge-details" id="div-pledge-noreward">
             <label for="txt-pledge-amount">Enter your pledge here</label>
-            <input type="number" name="txt-pledge-amount" id="txt-pledge-noreward" value="1" min="1">
-            <button id="btn-continue-noreward">Continue</button>
+            <div class="div-input-pledge" id="div-input-noreward">
+              <input type="number" name="txt-pledge-amount" id="txt-pledge-noreward" value="1" min="1">
+            </div>
+            <button class="green-button" id="btn-continue-noreward">Continue</button>
           </div>
         </section>
         <section class="modal-product-container">
@@ -117,8 +119,10 @@
           </div>
           <div class="modal-pledge-details" id="div-pledge-bamboo">
             <label for="txt-pledge-amount">Enter your pledge here</label>
-            <input type="number" name="txt-pledge-amount" id="txt-pledge-bamboo" value="25" min="25">
-            <button id="btn-continue-bamboo">Continue</button>
+            <div class="div-input-pledge" id="div-input-bamboo">
+              <input type="number" name="txt-pledge-amount" id="txt-pledge-bamboo" value="25" min="25">
+            </div>
+            <button class="green-button" id="btn-continue-bamboo">Continue</button>
           </div>
         </section>
         <section class="modal-product-container">
@@ -131,8 +135,10 @@
           </div>
           <div class="modal-pledge-details" id="div-pledge-blackedition">
             <label for="txt-pledge-amount">Enter your pledge here</label>
-            <input type="number" name="txt-pledge-amount" id="txt-pledge-blackedition" value="75" min="75">
-            <button id="btn-continue-blackedition">Continue</button>
+            <div class="div-input-pledge" id="div-input-blackedition">
+              <input type="number" name="txt-pledge-amount" id="txt-pledge-blackedition" value="75" min="75">
+            </div>
+            <button class="green-button" id="btn-continue-blackedition">Continue</button>
           </div>
         </section>
         <section class="modal-product-container product-disabled">
@@ -158,7 +164,7 @@
       <img src="./images/icon-check.svg" alt="Green check icon">
       <h1>Thanks for your support!</h1>
       <p>Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an email once our campaign is completed.</p>
-      <button id="btn-close-completed">Got it!</button>
+      <button class="green-button" id="btn-close-completed">Got it!</button>
     </div>
   </section>
 

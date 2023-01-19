@@ -161,12 +161,29 @@ section{
     margin-bottom: 1rem;
 }
 
-.btn-back{
-    grid-area: button1;
-    border: none;
-    border-radius: 30px;
+.green-button{
     background-color: var(--moderate-cyan);
     color: white;
+    border: none;
+    border-radius: 30px;
+    transition: all .2s ease;
+    cursor: pointer;
+}
+
+.green-button:hover{
+    background-color: var(--dark-cyan);
+}
+
+.green-button:active{
+    opacity: .8;
+}
+
+.btn-back{
+    grid-area: button1;
+    /*border: none;
+    border-radius: 30px;
+    background-color: var(--moderate-cyan);
+    color: white;*/
     font-size: .9rem;
     font-weight: 600;
     padding: 1rem 3rem;
@@ -174,6 +191,8 @@ section{
     justify-self: end;
     width: auto;
 }
+
+
 
 .btn-bookmark{
     grid-area: button2;
@@ -184,7 +203,12 @@ section{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.25s ease-in-out;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-bookmark:hover{
+    opacity: .8;
 }
 
 .btn-bookmark span{
@@ -228,8 +252,27 @@ section{
 }
 
 .stat-progress-bar{
+    -webkit-appearance: none;
     width: 100%;
-    height: 2rem;
+    height: .8rem;
+    
+}
+
+/* For Firefox */
+.stat-progress-bar::-moz-progress-bar {
+    background: var(--moderate-cyan);
+    border-radius: 50px;
+}
+
+/* For Chrome or Safari */
+.stat-progress-bar::-webkit-progress-value {
+    background: var(--moderate-cyan);
+    border-radius: 50px;
+}
+
+.stat-progress-bar::-webkit-progress-bar {
+    background: var(--moderate-gray);
+    border-radius: 50px;
 }
 
 .about-section{
@@ -299,10 +342,10 @@ section{
 }
 
 .btn-select-reward{
-    border: none;
+    /*border: none;
     border-radius: 30px;
     background-color: var(--moderate-cyan);
-    color: white;
+    color: white;*/
     font-size: .8rem;
     font-weight: 600;
     padding: 1rem 1.8rem;
@@ -316,6 +359,9 @@ section{
 
 .product-disabled button{
     background-color: var(--dark-gray);
+    border: none;
+    border-radius: 30px;
+    color: white;
 }
 
 .modal-screen{
@@ -368,6 +414,10 @@ section{
     border: 1px solid rgb(226, 226, 226);
     border-radius: 10px;
     position: relative;
+}
+
+.green-border{
+    border: 1px solid var(--dark-cyan);
 }
 
 .modal-container p, .modal-product-form{
@@ -503,8 +553,36 @@ section{
 .modal-pledge-details input{
     grid-area: input;
     border: 1px solid rgb(226, 226, 226);
-    text-indent: .7rem;
+    text-indent: 1.5rem;
+    font-size: 1rem;
+    color: black;
+    font-weight: 600;
+}
+
+.modal-pledge-details input:focus{
+    border: 1px solid var(--dark-cyan);
+}
+
+.div-input-pledge{
     position: relative;
+}
+
+.div-input-pledge::before{
+    content: "$";
+    color: var(--dark-gray);
+    font-size: 1rem;
+    position: absolute;
+    top: .75rem;
+    left: 1.1rem;
+}
+
+.invalid-value::after{
+    content: "Value is not valid";
+    color: rgb(233, 102, 123);
+    font-size: .7rem;
+    position: absolute;
+    bottom: -15px;
+    left: 0.5rem;
 }
 
 input::-webkit-outer-spin-button,
@@ -519,9 +597,9 @@ input[type=number] {
 
 .modal-pledge-details button{
     grid-area: button;
-    border: none;
+    /*border: none;
     background-color: var(--moderate-cyan);
-    color: white;
+    color: white;*/
     font-size: .8rem;
     font-weight: 700;
 }
@@ -547,10 +625,10 @@ input[type=number] {
 }
 
 .modal-completed button{
-    border: none;
+    /*border: none;
     border-radius: 30px;
     background-color: var(--moderate-cyan);
-    color: white;
+    color: white;*/
     font-size: .9rem;
     font-weight: 700;
     padding: .7rem 2rem;
@@ -617,6 +695,14 @@ input[type=number] {
         color: white;
         font-size: 1rem;
         font-weight: 400;
+    }
+
+    .nav-bar a:hover{
+        color: var(--moderate-gray);
+    }
+
+    .nav-bar a:active{
+        opacity: .8;
     }
 
     .burger-menu{

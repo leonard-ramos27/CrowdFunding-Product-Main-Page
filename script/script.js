@@ -30,111 +30,83 @@ const btn_close_completed = document.getElementById('btn-close-completed');
 const txt_pledge_noreward = document.getElementById('txt-pledge-noreward');
 const txt_pledge_bamboo = document.getElementById('txt-pledge-bamboo');
 const txt_pledge_blackedition = document.getElementById('txt-pledge-blackedition');
+const div_input_noreward = document.getElementById('div-input-noreward');
+const div_input_bamboo = document.getElementById('div-input-bamboo');
+const div_input_blackedition = document.getElementById('div-input-blackedition');
+let pledgeStats = {
+    totalPledge: 89914,
+    totalBackers: 5007
+};
+
 
 
 
 //EVENT LISTENERS
 
-
-burgericon.addEventListener('click', () => {    
-    //Open Burger Menu
-    nav.classList.add('nav-bar-show');
-    nav.classList.add('nav-bar-transition');
-    burgericon.classList.add('hidden');
-    burgerclose.classList.remove('hidden');
-})
-
-burgerclose.addEventListener('click', () => {   
-    //Close Burger Menu 
-    nav.classList.remove('nav-bar-show');
-    nav.classList.add('nav-bar-transition');
-    burgericon.classList.remove('hidden');
-    burgerclose.classList.add('hidden');
-})
-
-window.onresize = () => {       
-    //Resetting Burger Menu when window size is changed
-    let viewPortWidth = window.innerWidth;
-    if(viewPortWidth > 848){
-        nav.classList.remove('nav-bar-show');
-        nav.classList.remove('nav-bar-transition');
-        burgericon.classList.remove('hidden');
-        burgerclose.classList.add('hidden');
-    }
-}
-
-btn_bookmark.addEventListener("click", toggleBookmark); 
-
-btn_back_project.addEventListener("click", () => {   
-    //Open Back this Project Modal
-    toggleModal();
-});
+window.addEventListener('resize', resetMobileMenu)
+window.addEventListener("click", windowOnClick)  
+burgericon.addEventListener('click', openMobileMenu)
+burgerclose.addEventListener('click', closeMobileMenu)
+btn_bookmark.addEventListener("click", toggleBookmark)
+btn_back_project.addEventListener("click", toggleModal)
 
 btn_close_modal.addEventListener("click", () => {    
-    //Close Back this Project Modal
-    toggleModal();
-    hidePledgeSections();
-});
-
-window.addEventListener("click", windowOnClick);  
+    toggleModal()
+    hidePledgeSections()
+})
 
 btn_select_bamboo.addEventListener('click', () => {
-    //Selects Bamboo Stand Reward
-    radio_bamboo.checked = true;
-    div_pledge_bamboo.classList.add('show-pledge-details');
-    toggleModal();
+    selectBambooReward()
+    toggleModal()
 })
 
 btn_select_blackEdition.addEventListener('click', () => {
-    //Selects Black Edition Stand Reward
-    radio_blackEdition.checked = true;
-    div_pledge_blackedition.classList.add('show-pledge-details');
-    toggleModal();
+    selectBlackEditionReward()
+    toggleModal()
 })
 
-radio_noreward.addEventListener('change', () => {
-    hidePledgeSections();
-    if (radio_noreward.checked = true ){
-        div_pledge_noreward.classList.add('show-pledge-details');
-    }
+radio_noreward.addEventListener('change', selectNoReward)
+radio_bamboo.addEventListener('change', selectBambooReward)
+radio_blackEdition.addEventListener('change', selectBlackEditionReward)
+
+btn_continue_noreward.addEventListener('click', (event)=>{
+    event.preventDefault();
+    btnContinueClicked('noreward', parseFloat(txt_pledge_noreward.value))
 })
 
-radio_bamboo.addEventListener('change', () => {
-    hidePledgeSections();
-    if (radio_bamboo.checked = true ){
-        div_pledge_bamboo.classList.add('show-pledge-details');
-    }
-})
-
-radio_blackEdition.addEventListener('change', () => {
-    hidePledgeSections();
-    if (radio_blackEdition.checked = true ){
-        div_pledge_blackedition.classList.add('show-pledge-details');
-    }
-})
-
-btn_continue_noreward.addEventListener('click', () => {
+/*(event) => {
     event.preventDefault();
     const pledgeAmount = parseFloat(txt_pledge_noreward.value);
     if(pledgeAmount >= 1){
         toggleModalCompleted();
+        div_input_noreward.classList.remove('invalid-value')
+    }else{
+        div_input_noreward.classList.add('invalid-value')
     }
-});
+});*/
 
-btn_continue_bamboo.addEventListener('click', () => {
+btn_continue_bamboo.addEventListener('click', (event) => {
     event.preventDefault();
-    const pledgeAmount = parseFloat(txt_pledge_bamboo.value);
+    btnContinueClicked('bamboo', parseFloat(txt_pledge_bamboo.value))
+    /*const pledgeAmount = parseFloat(txt_pledge_bamboo.value);
     if(pledgeAmount >= 25){
         toggleModalCompleted();
-    }
+        div_input_bamboo.classList.remove('invalid-value')
+    }else{
+        div_input_bamboo.classList.add('invalid-value')
+    }*/
 });
 
-btn_continue_blackedition.addEventListener('click', () => {
+btn_continue_blackedition.addEventListener('click', (event) => {
     event.preventDefault();
-    const pledgeAmount = parseFloat(txt_pledge_blackedition.value);
+    btnContinueClicked('blackedition', parseFloat(txt_pledge_blackedition.value))
+    /*const pledgeAmount = parseFloat(txt_pledge_blackedition.value);
     if(pledgeAmount >= 75){
         toggleModalCompleted();
-    }
+        div_input_blackedition.classList.remove('invalid-value')
+    }else{
+        div_input_blackedition.classList.add('invalid-value')
+    }*/
 });
 
 btn_close_completed.addEventListener('click', ()=>{
@@ -146,6 +118,34 @@ btn_close_completed.addEventListener('click', ()=>{
 
 
 //FUNCTIONS
+
+
+function openMobileMenu(){
+    //Open Burger Menu
+    nav.classList.add('nav-bar-show');
+    nav.classList.add('nav-bar-transition');
+    burgericon.classList.add('hidden');
+    burgerclose.classList.remove('hidden');
+}
+
+function closeMobileMenu(){
+    //Close Burger Menu 
+    nav.classList.remove('nav-bar-show');
+    nav.classList.add('nav-bar-transition');
+    burgericon.classList.remove('hidden');
+    burgerclose.classList.add('hidden');
+}
+
+function resetMobileMenu(){
+    //Resetting Burger Menu when window size is changed
+    let viewPortWidth = window.innerWidth;
+    if(viewPortWidth > 848){
+        nav.classList.remove('nav-bar-show');
+        nav.classList.remove('nav-bar-transition');
+        burgericon.classList.remove('hidden');
+        burgerclose.classList.add('hidden');
+    }
+}
 
 function toggleModal(){
     //Opens Back this Project Modal 
@@ -168,6 +168,11 @@ function windowOnClick(event){
 function toggleBookmark(){
     //Turns on and off the Bookmark
     btn_bookmark.classList.toggle("bookmark-selected");
+    if(btn_bookmark.classList.contains("bookmark-selected")){
+        btn_bookmark.children[1].innerHTML = "Bookmarked"
+    }else{
+        btn_bookmark.children[1].innerHTML = "Bookmark"
+    }
 }
 
 function hidePledgeSections(){
@@ -179,8 +184,86 @@ function hidePledgeSections(){
     radio_noreward.checked = false;
     radio_bamboo.checked = false;
     radio_blackEdition.checked = false;
+    //remove invalid value error message
+    div_input_noreward.classList.remove('invalid-value')
+    div_input_bamboo.classList.remove('invalid-value')
+    div_input_blackedition.classList.remove('invalid-value')
+    //reset input values
+    txt_pledge_noreward.value = "1";
+    txt_pledge_bamboo.value = "25";
+    txt_pledge_blackedition.value = "75";
+    //remove green borders for sections
+    radio_noreward.closest('.modal-product-container').classList.remove('green-border')
+    radio_bamboo.closest('.modal-product-container').classList.remove('green-border')
+    radio_blackEdition.closest('.modal-product-container').classList.remove('green-border')
 }
 
 function toggleModalCompleted(){
     modal_completed.classList.toggle("show-modal");
+}
+
+function selectBambooReward(){
+    hidePledgeSections();
+    if (radio_bamboo.checked = true ){
+        div_pledge_bamboo.classList.add('show-pledge-details');
+        radio_bamboo.closest('.modal-product-container').classList.add('green-border')
+    }
+}
+
+function selectBlackEditionReward(){
+    hidePledgeSections();
+    if (radio_blackEdition.checked = true ){
+        div_pledge_blackedition.classList.add('show-pledge-details');
+        radio_blackEdition.closest('.modal-product-container').classList.add('green-border')
+    }
+}
+
+function selectNoReward(){
+    hidePledgeSections();
+    if (radio_noreward.checked = true ){
+        div_pledge_noreward.classList.add('show-pledge-details');
+        radio_noreward.closest('.modal-product-container').classList.add('green-border')
+    }
+}
+
+function btnContinueClicked(pledgeType, pledgeAmount){
+    console.log(pledgeType, pledgeAmount)
+    switch(pledgeType){
+        case "noreward":
+            if(pledgeAmount >= 1){
+                addPledge(pledgeAmount);
+                toggleModalCompleted();
+                div_input_noreward.classList.remove('invalid-value')
+                break;
+            }else{
+                div_input_noreward.classList.add('invalid-value')
+                break;
+            }
+        case "bamboo" :
+            if(pledgeAmount >= 25){
+                addPledge(pledgeAmount);
+                toggleModalCompleted();
+                div_input_bamboo.classList.remove('invalid-value')
+                break;
+            }else{
+                div_input_bamboo.classList.add('invalid-value')
+                break;
+            }
+        case "blackedition" :
+            if(pledgeAmount >= 75){
+                addPledge(pledgeAmount);
+                toggleModalCompleted();
+                div_input_blackedition.classList.remove('invalid-value')
+                break;
+            }else{
+                div_input_blackedition.classList.add('invalid-value')
+                break;
+            }
+    }
+}
+
+function addPledge(pledgeAmount){
+    pledgeStats.totalPledge += pledgeAmount;
+    pledgeStats.totalBackers++;
+    console.log(pledgeStats.totalPledge, pledgeStats.totalBackers)
 }
