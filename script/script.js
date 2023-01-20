@@ -53,21 +53,24 @@ btn_back_project.addEventListener("click", toggleModal)
 btn_close_modal.addEventListener("click", () => {    
     toggleModal()
     hidePledgeSections()
+    clearRadioButtons()
 })
 
-btn_select_bamboo.addEventListener('click', () => {
+btn_select_bamboo.addEventListener('click', btnSelectRewardClicked)
+/*() => {
     selectBambooReward()
     toggleModal()
-})
+}*/
 
-btn_select_blackEdition.addEventListener('click', () => {
+btn_select_blackEdition.addEventListener('click', btnSelectRewardClicked)
+/*() => {
     selectBlackEditionReward()
     toggleModal()
-})
+}*/
 
-radio_noreward.addEventListener('change', selectNoReward)
-radio_bamboo.addEventListener('change', selectBambooReward)
-radio_blackEdition.addEventListener('change', selectBlackEditionReward)
+radio_noreward.addEventListener('click', radioBtnChecked)
+radio_bamboo.addEventListener('change', radioBtnChecked)
+radio_blackEdition.addEventListener('change', radioBtnChecked)
 
 btn_continue_noreward.addEventListener('click', (event)=>{
     event.preventDefault();
@@ -113,6 +116,7 @@ btn_close_completed.addEventListener('click', ()=>{
     toggleModalCompleted();
     toggleModal();
     hidePledgeSections();
+    clearRadioButtons();
 });
 
 
@@ -156,11 +160,10 @@ function toggleModal(){
 function windowOnClick(event){
     //Closes Modal when clicking the gray background screen
     if (event.target === modal_back_project) {
-        console.log('closing modal')
         toggleModal();
         hidePledgeSections();
+        clearRadioButtons();
     }else if(event.target === modal_completed){
-        console.log('closing modal 2')
         toggleModalCompleted();
     }
 }
@@ -180,10 +183,6 @@ function hidePledgeSections(){
     div_pledge_noreward.classList.remove('show-pledge-details');
     div_pledge_bamboo.classList.remove('show-pledge-details');
     div_pledge_blackedition.classList.remove('show-pledge-details');
-    //Unchecks all radio buttons
-    radio_noreward.checked = false;
-    radio_bamboo.checked = false;
-    radio_blackEdition.checked = false;
     //remove invalid value error message
     div_input_noreward.classList.remove('invalid-value')
     div_input_bamboo.classList.remove('invalid-value')
@@ -196,6 +195,13 @@ function hidePledgeSections(){
     radio_noreward.closest('.modal-product-container').classList.remove('green-border')
     radio_bamboo.closest('.modal-product-container').classList.remove('green-border')
     radio_blackEdition.closest('.modal-product-container').classList.remove('green-border')
+}
+
+function clearRadioButtons(){
+    //Unchecks all radio buttons
+    radio_noreward.checked = false;
+    radio_bamboo.checked = false;
+    radio_blackEdition.checked = false;
 }
 
 function toggleModalCompleted(){
@@ -223,6 +229,32 @@ function selectNoReward(){
     if (radio_noreward.checked = true ){
         div_pledge_noreward.classList.add('show-pledge-details');
         radio_noreward.closest('.modal-product-container').classList.add('green-border')
+    }
+}
+
+function btnSelectRewardClicked(event){
+    //Checks the type of reward selected
+    if(event.target === btn_select_bamboo){
+        radio_bamboo.checked = true
+    }else if(event.target === btn_select_blackEdition){
+        radio_blackEdition.checked = true
+    }
+    radioBtnChecked()
+    toggleModal()
+}
+
+function radioBtnChecked(){
+    hidePledgeSections();
+    console.log(radio_noreward.checked, radio_bamboo.checked, radio_blackEdition.checked)
+    if (radio_noreward.checked === true ){
+        div_pledge_noreward.classList.add('show-pledge-details');
+        radio_noreward.closest('.modal-product-container').classList.add('green-border')
+    }else if(radio_bamboo.checked === true){
+        div_pledge_bamboo.classList.add('show-pledge-details');
+        radio_bamboo.closest('.modal-product-container').classList.add('green-border')
+    }else if (radio_blackEdition.checked === true ){
+        div_pledge_blackedition.classList.add('show-pledge-details');
+        radio_blackEdition.closest('.modal-product-container').classList.add('green-border')
     }
 }
 
@@ -267,3 +299,5 @@ function addPledge(pledgeAmount){
     pledgeStats.totalBackers++;
     console.log(pledgeStats.totalPledge, pledgeStats.totalBackers)
 }
+
+
