@@ -743,6 +743,7 @@ input[type=number] {
         position: relative;
         flex-basis: 100%;
         align-items: flex-start;
+        padding: 1rem;
     }
 
     .border-line::after{

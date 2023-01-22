@@ -51,8 +51,8 @@
       </section>
       <section class="section-container stats-section">
         <div class="stats-container">
-          <p class="border-line"><span class="stat-digit">$89,914</span>of $100,000 backed</p>
-          <p class="border-line"><span class="stat-digit">5,007</span>total backers</p>
+          <p class="border-line"><span class="stat-digit" id="pledge-total-amount">$89,914</span>of $100,000 backed</p>
+          <p class="border-line"><span class="stat-digit" id="pledge-total-backers">5,007</span>total backers</p>
           <p><span class="stat-digit">56</span>days left</p>
         </div>
         <progress class="stat-progress-bar" max="100000" value="89914"></progress>
@@ -67,14 +67,14 @@
           <h3 class="product-name">Bamboo Stand</h3>
           <p class="product-price">Pledge $25 or more</p>
           <p class="product-desc">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.</p>
-          <p class="product-count"><span>101</span> left</p>
+          <p class="product-count"><span class="bamboo-count">101</span> left</p>
           <button class="btn-select-reward green-button" id="btn-select-bamboo">Select Reward</button>
         </section>
         <section class="product-container">
           <h3 class="product-name">Black Edition Stand</h3>
           <p class="product-price">Pledge $75 or more</p>
           <p class="product-desc">You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
-          <p class="product-count"><span>64</span> left</p>
+          <p class="product-count"><span class="black-edition-count">64</span> left</p>
           <button class="btn-select-reward green-button" id="btn-select-black-edition">Select Reward</button>
         </section>
         <section class="product-container product-disabled">
@@ -115,7 +115,7 @@
             <label for="radio-bamboo-stand" class="modal-product-name">Bamboo Stand</label>
             <p class="modal-product-price">Pledge $25 or more</p>
             <p class="modal-product-desc">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.</p>
-            <p class="modal-product-count"><span>101</span>left</p>
+            <p class="modal-product-count"><span class="bamboo-count">101</span>left</p>
           </div>
           <div class="modal-pledge-details" id="div-pledge-bamboo">
             <label for="txt-pledge-amount">Enter your pledge here</label>
@@ -131,7 +131,7 @@
             <label for="radio-bamboo-stand" class="modal-product-name">Black Edition Stand</label>
             <p class="modal-product-price">Pledge $75 or more</p>
             <p class="modal-product-desc">You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
-            <p class="modal-product-count"><span>64</span>left</p>
+            <p class="modal-product-count"><span class="black-edition-count">64</span>left</p>
           </div>
           <div class="modal-pledge-details" id="div-pledge-blackedition">
             <label for="txt-pledge-amount">Enter your pledge here</label>
