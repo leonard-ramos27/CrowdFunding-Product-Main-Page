@@ -9,6 +9,10 @@ const modal_back_project = document.getElementById('modal-back-project');
 const btn_close_modal = document.getElementById('btn-close-modal');
 const main_window = document.getElementById('main-window');
 const btn_bookmark = document.getElementById('btn-bookmark');
+
+const bookmark_icon_gray = document.getElementById('bookmark-icon-gray')
+const bookmark_icon_green= document.getElementById('bookmark-icon-green')
+
 const radio_noreward = document.getElementById('radio-noreward');
 const radio_bamboo = document.getElementById('radio-bamboo');
 const radio_blackEdition = document.getElementById('radio-black-edition');
@@ -37,7 +41,8 @@ let pledgeStats = {
     totalPledge: 89914,
     totalBackers: 5007,
     bambooItemCount: 101,
-    blackEditionItemCount: 64
+    blackEditionItemCount: 64,
+    isBookMarked: false
 };
 
 //EVENT LISTENERS
@@ -102,11 +107,15 @@ function resetMobileMenu(){
 function toggleBookmark(){
     //Turns on and off the Bookmark
     btn_bookmark.classList.toggle("bookmark-selected");
+    bookmark_icon_gray.classList.toggle("hidden")
+    bookmark_icon_green.classList.toggle("hidden")
     //Changes Text to Bookmarked if turned on
     if(btn_bookmark.classList.contains("bookmark-selected")){
-        btn_bookmark.children[1].innerHTML = "Bookmarked"
+        btn_bookmark.children[2].innerHTML = "Bookmarked"
+        pledgeStats.isBookMarked = true
     }else{
-        btn_bookmark.children[1].innerHTML = "Bookmark"
+        btn_bookmark.children[2].innerHTML = "Bookmark"
+        pledgeStats.isBookMarked = false
     }
 }
 
