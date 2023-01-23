@@ -9,10 +9,8 @@ const modal_back_project = document.getElementById('modal-back-project');
 const btn_close_modal = document.getElementById('btn-close-modal');
 const main_window = document.getElementById('main-window');
 const btn_bookmark = document.getElementById('btn-bookmark');
-
 const bookmark_icon_gray = document.getElementById('bookmark-icon-gray')
 const bookmark_icon_green= document.getElementById('bookmark-icon-green')
-
 const radio_noreward = document.getElementById('radio-noreward');
 const radio_bamboo = document.getElementById('radio-bamboo');
 const radio_blackEdition = document.getElementById('radio-black-edition');
@@ -37,14 +35,9 @@ const div_total_backers = document.getElementById('pledge-total-backers');
 const stats_progress_bar = document.querySelector('.stat-progress-bar');
 const span_bamboo_count = document.querySelectorAll('.bamboo-count');
 const span_black_edition_count = document.querySelectorAll('.black-edition-count');
+const div_product_container_bamboo = document.getElementById('product-container-bamboo');
+const div_product_container_blackedition = document.getElementById('product-container-blackedition');
 let pledgeStats = {};
-/*let pledgeStats = {
-    totalPledge: 89914,
-    totalBackers: 5007,
-    bambooItemCount: 101,
-    blackEditionItemCount: 64,
-    isBookMarked: false
-};*/
 
 //EVENT LISTENERS
 
@@ -73,8 +66,6 @@ btn_close_completed.addEventListener('click', ()=>{
     hidePledgeSections();
     clearRadioButtons();
 });
-
-
 
 //FUNCTIONS
 
@@ -123,8 +114,6 @@ function toggleBookmark(){
         btn_bookmark.children[2].innerHTML = "Bookmark"
         pledgeStats.isBookMarked = false
     }
-    //Update LocalStorage
-    //updateLocalPledgeStats()
 }
 
 function toggleModal(){
@@ -181,32 +170,6 @@ function clearErrorInvalidValue(){
     div_input_blackedition.classList.remove('invalid-value')
 }
 
-
-
-/*function selectBambooReward(){
-    hidePledgeSections();
-    if (radio_bamboo.checked = true ){
-        div_pledge_bamboo.classList.add('show-pledge-details');
-        radio_bamboo.closest('.modal-product-container').classList.add('green-border')
-    }
-}
-
-function selectBlackEditionReward(){
-    hidePledgeSections();
-    if (radio_blackEdition.checked = true ){
-        div_pledge_blackedition.classList.add('show-pledge-details');
-        radio_blackEdition.closest('.modal-product-container').classList.add('green-border')
-    }
-}
-
-function selectNoReward(){
-    hidePledgeSections();
-    if (radio_noreward.checked = true ){
-        div_pledge_noreward.classList.add('show-pledge-details');
-        radio_noreward.closest('.modal-product-container').classList.add('green-border')
-    }
-}*/
-
 function btnSelectRewardClicked(event){
     //Checks the type of reward selected
     if(event.target === btn_select_bamboo){
@@ -231,42 +194,6 @@ function radioBtnChecked(){
         radio_blackEdition.closest('.modal-product-container').classList.add('green-border')
     }
 }
-
-/*function btnContinueClicked(pledgeType, pledgeAmount){
-    console.log(pledgeType, pledgeAmount)
-    switch(pledgeType){
-        case "noreward":
-            if(pledgeAmount >= 1){
-                addPledge(pledgeAmount);
-                toggleModalCompleted();
-                div_input_noreward.classList.remove('invalid-value')
-                break;
-            }else{
-                div_input_noreward.classList.add('invalid-value')
-                break;
-            }
-        case "bamboo" :
-            if(pledgeAmount >= 25){
-                addPledge(pledgeAmount);
-                toggleModalCompleted();
-                div_input_bamboo.classList.remove('invalid-value')
-                break;
-            }else{
-                div_input_bamboo.classList.add('invalid-value')
-                break;
-            }
-        case "blackedition" :
-            if(pledgeAmount >= 75){
-                addPledge(pledgeAmount);
-                toggleModalCompleted();
-                div_input_blackedition.classList.remove('invalid-value')
-                break;
-            }else{
-                div_input_blackedition.classList.add('invalid-value')
-                break;
-            }
-    }
-}*/
 
 function btnContinueClicked(event){
     event.preventDefault()
@@ -349,11 +276,47 @@ function updateStats(){
     //Updates total item left for Bamboo Stand in Main Page and Modal
     span_bamboo_count.forEach(span_item_count => {
         span_item_count.innerText = pledgeStats.bambooItemCount
+        //Checks if there is Bamboo Item Left
+        if(pledgeStats.bambooItemCount == 0){
+            //disables bamboo reward section on main page and modal screen
+            div_product_container_bamboo.classList.add('product-disabled')
+            btn_select_bamboo.disabled = true
+            btn_select_bamboo.classList.remove('green-button')
+            radio_bamboo.closest('.modal-product-container').classList.add('product-disabled')
+            radio_bamboo.disabled = true
+        }else if(pledgeStats.bambooItemCount > 0){
+            div_product_container_bamboo.classList.remove('product-disabled')
+            btn_select_bamboo.disabled = false
+            btn_select_bamboo.classList.add('green-button')
+            radio_bamboo.closest('.modal-product-container').classList.remove('product-disabled')
+            radio_bamboo.disabled = false
+        }
     });
     //Updates total item left for Bamboo Stand in Main Page and Modal
     span_black_edition_count.forEach(span_item_count => {
         span_item_count.innerText = pledgeStats.blackEditionItemCount
+        //Checks if there is Black Edition Item Left
+        if(pledgeStats.blackEditionItemCount == 0){
+            //disables Black Edition reward section on main page and modal screen
+            div_product_container_blackedition.classList.add('product-disabled')
+            btn_select_blackEdition.disabled = true
+            btn_select_blackEdition.classList.remove('green-button')
+            radio_blackEdition.closest('.modal-product-container').classList.add('product-disabled')
+            radio_blackEdition.disabled = true
+        }else if(pledgeStats.blackEditionItemCount > 0){
+            div_product_container_blackedition.classList.remove('product-disabled')
+            btn_select_blackEdition.disabled = false
+            btn_select_blackEdition.classList.add('green-button')
+            radio_blackEdition.closest('.modal-product-container').classList.remove('product-disabled')
+            radio_blackEdition.disabled = false
+        }
     });
+    //Check if Bookmark is enabled
+    if(pledgeStats.isBookMarked === true){
+        if(!btn_bookmark.classList.contains("bookmark-selected")){
+            toggleBookmark()
+        }
+    }
 }
 
 function getLocalPledgeStats(){
@@ -369,9 +332,6 @@ function getLocalPledgeStats(){
         pledgeStats = JSON.parse(localStorage.getItem('pledgeStats'));
     }
     updateStats()
-    if(pledgeStats.isBookMarked === true){
-        toggleBookmark()
-    }
     console.log(pledgeStats)
 }
 
