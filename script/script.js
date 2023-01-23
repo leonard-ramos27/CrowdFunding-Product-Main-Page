@@ -37,13 +37,14 @@ const div_total_backers = document.getElementById('pledge-total-backers');
 const stats_progress_bar = document.querySelector('.stat-progress-bar');
 const span_bamboo_count = document.querySelectorAll('.bamboo-count');
 const span_black_edition_count = document.querySelectorAll('.black-edition-count');
-let pledgeStats = {
+let pledgeStats = {};
+/*let pledgeStats = {
     totalPledge: 89914,
     totalBackers: 5007,
     bambooItemCount: 101,
     blackEditionItemCount: 64,
     isBookMarked: false
-};
+};*/
 
 //EVENT LISTENERS
 
@@ -51,7 +52,7 @@ window.addEventListener('resize', resetMobileMenu)
 window.addEventListener("click", windowOnClick)  
 burgericon.addEventListener('click', openMobileMenu)
 burgerclose.addEventListener('click', closeMobileMenu)
-btn_bookmark.addEventListener("click", toggleBookmark)
+btn_bookmark.addEventListener("click", btnBookmarkClicked)
 btn_back_project.addEventListener("click", toggleModal)
 btn_select_bamboo.addEventListener('click', btnSelectRewardClicked)
 btn_select_blackEdition.addEventListener('click', btnSelectRewardClicked)
@@ -104,6 +105,11 @@ function resetMobileMenu(){
     }
 }
 
+function btnBookmarkClicked(){
+    toggleBookmark()
+    updateLocalPledgeStats()
+}
+
 function toggleBookmark(){
     //Turns on and off the Bookmark
     btn_bookmark.classList.toggle("bookmark-selected");
@@ -117,6 +123,8 @@ function toggleBookmark(){
         btn_bookmark.children[2].innerHTML = "Bookmark"
         pledgeStats.isBookMarked = false
     }
+    //Update LocalStorage
+    //updateLocalPledgeStats()
 }
 
 function toggleModal(){
@@ -271,6 +279,8 @@ function btnContinueClicked(event){
             clearErrorInvalidValue()
             //Add amount to total Pledge
             addPledge(pledgeAmount)
+            //Update LocalStorage
+            updateLocalPledgeStats()
             //Show Modal Completed
             toggleModalCompleted()
             //Update stats in Main Page
@@ -288,6 +298,7 @@ function btnContinueClicked(event){
             addPledge(pledgeAmount)
             //Decrease item left for Bamboo Stand
             decrementBamboo()
+            updateLocalPledgeStats()
             toggleModalCompleted()
             updateStats()
         }else{
@@ -302,6 +313,7 @@ function btnContinueClicked(event){
             addPledge(pledgeAmount)
             //Decrease item left for Black Edition Stand
             decrementBlackEdition()
+            updateLocalPledgeStats()
             toggleModalCompleted()
             updateStats()
         }else{
@@ -344,3 +356,29 @@ function updateStats(){
     });
 }
 
+function getLocalPledgeStats(){
+    if(localStorage.getItem('pledgeStats') === null){
+        pledgeStats = {
+            totalPledge: 89914,
+            totalBackers: 5007,
+            bambooItemCount: 101,
+            blackEditionItemCount: 64,
+            isBookMarked: false
+        }
+    }else{
+        pledgeStats = JSON.parse(localStorage.getItem('pledgeStats'));
+    }
+    updateStats()
+    if(pledgeStats.isBookMarked === true){
+        toggleBookmark()
+    }
+    console.log(pledgeStats)
+}
+
+function updateLocalPledgeStats(){
+    if(pledgeStats !== null){
+        localStorage.setItem('pledgeStats', JSON.stringify(pledgeStats));
+    }
+}
+
+getLocalPledgeStats();
