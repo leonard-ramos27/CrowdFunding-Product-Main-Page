@@ -21,6 +21,7 @@ body{
     font-size: 16px;
     min-width: 300px;
     overflow-x: hidden;
+    display: grid;
 }
 
 input, button{
@@ -29,11 +30,6 @@ input, button{
 
 input:focus{
     outline: none;
-}
-
-main{
-    position: relative;
-    display: grid;
 }
 
 .main-hide-overflow{
@@ -95,6 +91,8 @@ header{
 
 .burger-icon, .close-icon{
     transition: display 1s ease-in-out;
+    background-color: transparent;
+    border: none;
 }
 
 .hidden{
@@ -106,7 +104,7 @@ section{
 }
 
 .section-wrapper{
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 1rem;
     position: absolute;
     top: 14rem;
     justify-self: center;
@@ -574,9 +572,25 @@ input[type=number] {
     padding: .7rem 2rem;
 }
 
+.attribution { 
+    background-color: var(--light-gray);
+    margin-top: 1rem;
+}
 
+.attribution p{
+    font-size: .7rem; 
+    color: var(--dark-gray);
+    text-align: center; 
+}
 
+.attribution a { 
+    color: var(--moderate-cyan); 
+    text-decoration: none;
+}
 
+.attribution a:hover{
+    cursor: pointer;
+}
 
 @media screen and (min-width: 35em) {
 
@@ -605,6 +619,10 @@ input[type=number] {
     .bookmark-selected span{
         color: var(--dark-cyan);
         font-weight: 700;
+    }
+
+    .attribution { 
+        font-size: .8rem; 
     }
 }
 

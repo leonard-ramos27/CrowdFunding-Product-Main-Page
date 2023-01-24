@@ -2,52 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
   <title>Frontend Mentor | Crowdfunding product page</title>
   <link rel="stylesheet" href="./styles/style.css">
   <script src="./script/script.js" defer></script>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
 <body>
-  <main id="main-window">
-    <!--This is the main screen which includes the header, the nav bar, the hero section, the stats section and the about section-->
-    <header id="header">
-      <div class="header-wrapper">
-        <div class="logo">
-          <svg width="128" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M7.272 20c2.69 0 5.022-1.4 6.202-3.54L9.88 14.402c-.439.96-1.454 1.537-2.662 1.537-1.783 0-3.1-1.29-3.1-3.184 0-1.893 1.317-3.183 3.1-3.183 1.208 0 2.196.576 2.662 1.537l3.595-2.086c-1.18-2.113-3.54-3.512-6.202-3.512C3.101 5.51 0 8.666 0 12.755 0 16.845 3.101 20 7.272 20zm11.367-.384v-6.202c0-2.717 2.415-3.403 4.116-3.129V5.62c-1.728 0-3.567.878-4.116 2.717V5.895h-4.116v13.72h4.116zM30.116 20c4.034 0 7.272-3.156 7.272-7.245s-3.238-7.244-7.272-7.244c-4.034 0-7.272 3.155-7.272 7.244 0 4.09 3.238 7.245 7.272 7.245zm0-4.007c-1.784 0-3.156-1.29-3.156-3.238s1.372-3.238 3.156-3.238 3.156 1.29 3.156 3.238c0 1.949-1.372 3.238-3.156 3.238zm15.181 3.623l2.196-7.327 2.195 7.327h3.842l4.39-13.721h-4.39l-1.976 7.354-2.14-7.354h-3.842l-2.14 7.354-1.977-7.354h-4.39l4.39 13.72h3.842zM64.156 20c1.839 0 3.183-.631 4.089-1.674v1.29h4.116V.406h-4.116v6.778c-.906-1.042-2.25-1.673-4.089-1.673-3.595 0-6.559 3.155-6.559 7.244 0 4.09 2.964 7.245 6.559 7.245zm.823-3.897c-1.893 0-3.265-1.29-3.265-3.348s1.372-3.348 3.265-3.348c1.894 0 3.266 1.29 3.266 3.348s-1.372 3.348-3.266 3.348zm14.66 3.513v-9.77h2.552V5.895H79.64c0-1.592 1.016-2.058 2.552-1.921V.022c-4.555-.274-6.668 2.03-6.668 5.873h-1.839v3.951h1.839v9.77h4.116zm8.266.384c1.811 0 3.184-.659 3.925-1.674v1.29h4.116V5.895H91.83v7.491c0 1.949-1.043 2.827-2.553 2.827-1.317 0-2.387-.796-2.387-2.497V5.895h-4.116v8.424c0 3.705 2.36 5.681 5.131 5.681zm14.44-.384v-7.492c0-1.948 1.044-2.826 2.553-2.826 1.317 0 2.387.795 2.387 2.497v7.82h4.117v-8.424c0-3.705-2.36-5.68-5.132-5.68-1.811 0-3.183.658-3.924 1.673v-1.29h-4.117v13.722h4.117zm17.02.384c1.84 0 3.184-.631 4.09-1.674v1.29h4.116V.406h-4.116v6.778c-.906-1.042-2.25-1.673-4.09-1.673-3.594 0-6.558 3.155-6.558 7.244 0 4.09 2.964 7.245 6.559 7.245zm.824-3.897c-1.893 0-3.265-1.29-3.265-3.348s1.372-3.348 3.265-3.348c1.894 0 3.266 1.29 3.266 3.348s-1.372 3.348-3.266 3.348z" fill="#FFF" fill-rule="nonzero"/></svg>
-        </div>
-        <nav class="nav-bar" id="nav-bar">
-          <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Discover</a></li>
-            <li><a href="#">Get Started</a></li>
-          </ul>
-        </nav>
-        <div class="burger-menu">
-          <div class="burger-icon" id="burger-icon">
-            <svg width="16" height="15" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" fill-rule="evenodd"><path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z"/></g></svg>
-          </div>
-          <div class="close-icon hidden" id="burger-close">
-            <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" fill-rule="evenodd"><path d="M2.404.782l11.314 11.314-2.122 2.122L.282 2.904z"/><path d="M.282 12.096L11.596.782l2.122 2.122L2.404 14.218z"/></g></svg>
-          </div>
+  <header id="header">
+    <div class="header-wrapper">
+      <div class="logo">
+        <img src="./images/logo.svg" alt="Crowdfund Logo">
+      </div>
+      <nav class="nav-bar" id="nav-bar">
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Discover</a></li>
+          <li><a href="#">Get Started</a></li>
+        </ul>
+      </nav>
+      <div class="burger-menu">
+        <button class="burger-icon" id="burger-icon" title="Open Menu">
+          <img src="./images/icon-hamburger.svg" alt="Open Menu">
+        </button>
+        <button class="close-icon hidden" id="burger-close" title="Close Menu">
+          <img src="./images/icon-close-menu.svg" alt="Close Menu">
         </div>
       </div>
-    </header>
-    <div class="section-wrapper">
+    </div>
+  </header>
+  <main id="main-window" class="section-wrapper">
       <section class="section-container hero-section">
         <img src="./images/logo-mastercraft.svg" alt="Mastercraft logo" class="logo-mastercraft">
         <h1>Mastercraft Bamboo Monitor Riser</h1>
         <p>A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
-        <button class="btn-back green-button" id="btn-back-project">Back this project</button>
-        <button class="btn-bookmark" alt="Bookmark Button" id="btn-bookmark">
+        <button class="btn-back green-button" id="btn-back-project" title="Back this Project">Back this project</button>
+        <button class="btn-bookmark" title="Bookmark" id="btn-bookmark">
           <img src="./images/icon-bookmark.svg" alt="Bookmark icon" id="bookmark-icon-gray">
           <img src="./images/icon-bookmark-2.svg" alt="Bookmark icon" class="hidden" id="bookmark-icon-green">
           <span>Bookmark</span>
@@ -59,7 +49,7 @@
           <p class="border-line"><span class="stat-digit" id="pledge-total-backers">5,007</span>total backers</p>
           <p><span class="stat-digit">56</span>days left</p>
         </div>
-        <progress class="stat-progress-bar" max="100000" value="89914"></progress>
+        <progress class="stat-progress-bar" max="100000" value="89914" aria-label="Progress Bar"></progress>
       </section>
       <section class="section-container about-section">
         <h2>About this Project</h2>
@@ -72,14 +62,14 @@
           <p class="product-price">Pledge $25 or more</p>
           <p class="product-desc">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.</p>
           <p class="product-count"><span class="bamboo-count">101</span> left</p>
-          <button class="btn-select-reward green-button" id="btn-select-bamboo">Select Reward</button>
+          <button class="btn-select-reward green-button" id="btn-select-bamboo" title="Select Bamboo Stand Reward">Select Reward</button>
         </section>
         <section class="product-container" id="product-container-blackedition">
           <h3 class="product-name">Black Edition Stand</h3>
           <p class="product-price">Pledge $75 or more</p>
           <p class="product-desc">You get a Black Special Edition computer stand and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
           <p class="product-count"><span class="black-edition-count">64</span> left</p>
-          <button class="btn-select-reward green-button" id="btn-select-black-edition">Select Reward</button>
+          <button class="btn-select-reward green-button" id="btn-select-black-edition" title="Select Black Edition Stand Reward">Select Reward</button>
         </section>
         <section class="product-container product-disabled" id="product-container-mahogany">
           <h3 class="product-name">Mahogany Special Edition</h3>
@@ -89,11 +79,14 @@
           <button class="btn-select-reward" disabled>Out of Stock</button>
         </section>
       </section>
-    </div>
+      <section class="attribution">
+        <p>
+          Challenge by <a href="https://www.frontendmentor.io/challenges/crowdfunding-product-page-7uvcZe7ZR" target="_blank">Frontend Mentor</a>. 
+          Coded by <a href="https://www.frontendmentor.io/profile/leonard-ramos27" target="_blank">Leonard Ramos</a>.
+        </p>
+      </section>
   </main>
-
   <section class="modal-screen" id="modal-back-project">
-    <!--This is the modal screen that will appear when clicking the back this project button or any of the select reward button-->
     <div class="modal-container">
       <h1>Back this project</h1>
       <button class="btn-close-modal" id="btn-close-modal"><img src="./images/icon-close-modal.svg" alt="Close Pop up" class="modal-close-icon"></button>
@@ -106,11 +99,11 @@
             <p class="modal-product-desc">Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.</p>
           </div>
           <div class="modal-pledge-details" id="div-pledge-noreward">
-            <label for="txt-pledge-amount">Enter your pledge here</label>
+            <label for="txt-pledge-noreward">Enter your pledge here</label>
             <div class="div-input-pledge" id="div-input-noreward">
               <input type="number" name="txt-pledge-amount" id="txt-pledge-noreward" value="1" min="1">
             </div>
-            <button class="green-button" id="btn-continue-noreward">Continue</button>
+            <button class="green-button" id="btn-continue-noreward" title="Continue">Continue</button>
           </div>
         </section>
         <section class="modal-product-container">
@@ -122,11 +115,11 @@
             <p class="modal-product-count"><span class="bamboo-count">101</span>left</p>
           </div>
           <div class="modal-pledge-details" id="div-pledge-bamboo">
-            <label for="txt-pledge-amount">Enter your pledge here</label>
+            <label for="txt-pledge-bamboo">Enter your pledge here</label>
             <div class="div-input-pledge" id="div-input-bamboo">
               <input type="number" name="txt-pledge-amount" id="txt-pledge-bamboo" value="25" min="25">
             </div>
-            <button class="green-button" id="btn-continue-bamboo">Continue</button>
+            <button class="green-button" id="btn-continue-bamboo" title="Continue">Continue</button>
           </div>
         </section>
         <section class="modal-product-container">
@@ -138,11 +131,11 @@
             <p class="modal-product-count"><span class="black-edition-count">64</span>left</p>
           </div>
           <div class="modal-pledge-details" id="div-pledge-blackedition">
-            <label for="txt-pledge-amount">Enter your pledge here</label>
+            <label for="txt-pledge-blackedition">Enter your pledge here</label>
             <div class="div-input-pledge" id="div-input-blackedition">
               <input type="number" name="txt-pledge-amount" id="txt-pledge-blackedition" value="75" min="75">
             </div>
-            <button class="green-button" id="btn-continue-blackedition">Continue</button>
+            <button class="green-button" id="btn-continue-blackedition" title="Continue">Continue</button>
           </div>
         </section>
         <section class="modal-product-container product-disabled">
@@ -156,19 +149,18 @@
           <div class="modal-pledge-details">
             <label for="txt-pledge-amount">Enter your pledge here</label>
             <input type="number" name="txt-pledge-amount" id="txt-pledge-amount" disabled>
-            <button disabled>Continue</button>
+            <button disabled title="Continue">Continue</button>
           </div>
         </section>
       </form>
     </div>
   </section>
-
   <section class="modal-screen" id="modal-completed">
     <div class="modal-container modal-completed">
       <img src="./images/icon-check.svg" alt="Green check icon">
       <h1>Thanks for your support!</h1>
       <p>Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an email once our campaign is completed.</p>
-      <button class="green-button" id="btn-close-completed">Got it!</button>
+      <button class="green-button" id="btn-close-completed" title="Got it">Got it!</button>
     </div>
   </section>
 </body>

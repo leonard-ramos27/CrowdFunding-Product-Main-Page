@@ -119,7 +119,8 @@ function toggleBookmark(){
 function toggleModal(){
     //Opens Modal of Back this project
     modal_back_project.classList.toggle("show-modal");
-    main_window.classList.toggle("main-hide-overflow");
+    //main_window.classList.toggle("main-hide-overflow");
+    document.body.classList.toggle("main-hide-overflow");
 }
 
 function toggleModalCompleted(){
@@ -332,7 +333,6 @@ function getLocalPledgeStats(){
         pledgeStats = JSON.parse(localStorage.getItem('pledgeStats'));
     }
     updateStats()
-    console.log(pledgeStats)
 }
 
 function updateLocalPledgeStats(){
